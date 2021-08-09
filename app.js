@@ -28,16 +28,19 @@ function saveTask(e) {
 }
 
 function deleteTask(id_product) {
-  console.log(id_product)
-  let tasks = JSON.parse(localStorage.getItem('tasks'));
-  for(let i = 0; i < tasks.length; i++) {
-    if(tasks[i].id_product == id_product) {
-      tasks.splice(i, 1);
+  if(confirm("Deseas eliminar?")){
+    console.log(id_product)
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    for(let i = 0; i < tasks.length; i++) {
+      if(tasks[i].id_product == id_product) {
+        tasks.splice(i, 1);
+      }
     }
+    
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    getTasks();
   }
   
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-  getTasks();
 }
 
 
